@@ -19,3 +19,5 @@ def auto_edit(string_path, desired_style):
 def revert_image(string_path):
     return load_image(string_path)
 
+auto_edit("data/0.jpg", "grunge black dark")
+

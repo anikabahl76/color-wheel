@@ -8,7 +8,8 @@ key_words = {"blue": [1], "green": [2], "red": [3],
 "clean": [7], "hue": [1, 2, 3, 8, 9, 10]}
 
 def choose_presets(user_input):
-    words = user_input.split(" ") 
+    words = user_input.split(" ")
+    word_size = len(words)
     all_preset_info = []
     unrecognized_words = []
     for word in words:
@@ -18,7 +19,7 @@ def choose_presets(user_input):
         except:
             key_words[word] = []
             unrecognized_words.append(word)
-    size = len(all_preset_info)
+    preset_size = len(all_preset_info)
     preset_counts = {}
     for preset in all_preset_info:
         try:
@@ -27,6 +28,6 @@ def choose_presets(user_input):
              preset_counts[preset] = 1
     presets = {}
     for key in preset_counts.keys():
-        presets[key] = preset_counts[key] / size
+        presets[key] = (0.3 * (preset_counts[key] / preset_size)) + (0.7 * (preset_counts[key] / word_size))
     return presets
     
